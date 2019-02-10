@@ -12,8 +12,6 @@ composer-install:
 start: 
 	docker-compose up -d app
 
-init: install-laravel build composer-install start
-
 shell:
 	docker-compose run --rm app bash
 
@@ -25,3 +23,9 @@ tests:
 
 install-laravel:
 	composer create-project --prefer-dist laravel/laravel app
+
+clean-git:
+	rm -rf .git
+	git init
+
+init: install-laravel build clean-git start
