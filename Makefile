@@ -9,8 +9,10 @@ clean:
 composer-install:
 	cd app && composer install
 
-init: install-laravel build composer-install
+start: 
 	docker-compose up -d app
+
+init: install-laravel build composer-install start
 
 shell:
 	docker-compose run --rm app bash
